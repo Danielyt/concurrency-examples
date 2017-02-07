@@ -24,5 +24,11 @@
   		<version>4.12</version>
   		<scope>test</scope>
   	</dependency>
+  	<dependency>
+  		<groupId>org.mapdb</groupId>
+  		<artifactId>thread-weaver</artifactId>
+  		<version>3.0.mapdb</version>
+  		<scope>test</scope>
+  	</dependency>
   </dependencies>
 </project>
