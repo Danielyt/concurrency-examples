@@ -17,7 +17,7 @@ public class Factorizer {
 		return factor(number);
 	}
 	
-	private List<BigInteger> factor(final BigInteger number) {
+	protected List<BigInteger> factor(final BigInteger number) {
 		int n = number.intValue();
 		List<BigInteger> factorList = new ArrayList<>();
 		for (int i = 2; i <= n / i; i++) {
