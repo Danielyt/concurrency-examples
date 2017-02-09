@@ -19,13 +19,13 @@ import com.google.testing.threadtester.ThreadedSecondary;
  * @author Drusev
  *
  */
-public class UnsafeCountingFactorizerTest {
-	
-	private UnsafeCountingFactorizer factorizer;
+public class SafeCountingFactorizerTest {
+
+	private SafeCountingFactorizer factorizer;
 
 	@ThreadedBefore
 	public void before() {
-		factorizer = new UnsafeCountingFactorizer();
+		factorizer = new SafeCountingFactorizer();
 	}
 
 	@ThreadedMain
@@ -46,6 +46,6 @@ public class UnsafeCountingFactorizerTest {
 	@Test
 	public void testThreading() {
 		AnnotatedTestRunner runner = new AnnotatedTestRunner();
-		runner.runTests(this.getClass(), UnsafeCountingFactorizer.class);
+		runner.runTests(this.getClass(), SafeCountingFactorizer.class);
 	}
 }

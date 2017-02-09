@@ -20,7 +20,7 @@ public class UnsafeCountingFactorizer extends CountingFactorizer {
 	}
 	
 	@Override
-	public List<BigInteger> factorize (final BigInteger number) {
+	public List<BigInteger> factorize(final BigInteger number) {
 		List<BigInteger> factorsList = factor(number);
 		long initialValue = count;
 		count = initialValue + 1;
