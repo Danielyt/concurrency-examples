@@ -11,7 +11,7 @@ import java.util.concurrent.atomic.AtomicReference;
  * @author Drusev
  *
  */
-public class SynchronizedFactorizer extends Factorizer {
+public class SlowCachedFactorizer extends Factorizer {
 
 	private final AtomicReference<BigInteger> lastNumber = new AtomicReference<>();
 

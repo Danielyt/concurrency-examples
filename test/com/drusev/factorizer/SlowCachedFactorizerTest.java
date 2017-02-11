@@ -25,21 +25,21 @@ import com.google.testing.threadtester.ThreadedTestRunner;
  * @author Drusev
  *
  */
-public class SynchronizedFactorizerTest {
+public class SlowCachedFactorizerTest {
 
 	private static final BigInteger number = BigInteger.valueOf(25);
 
 	private static final List<BigInteger> expectedFactors = Arrays.asList(BigInteger.valueOf(5), BigInteger.valueOf(5));
 
-	private static class MainTest extends MainRunnableImpl<SynchronizedFactorizer> {
+	private static class MainTest extends MainRunnableImpl<SlowCachedFactorizer> {
 
-		private SynchronizedFactorizer factorizer;
+		private SlowCachedFactorizer factorizer;
 
 		private List<BigInteger> actualFactors;
 
 		@Override
-		public Class<SynchronizedFactorizer> getClassUnderTest() {
-			return SynchronizedFactorizer.class;
+		public Class<SlowCachedFactorizer> getClassUnderTest() {
+			return SlowCachedFactorizer.class;
 		}
 
 		@Override
@@ -48,13 +48,13 @@ public class SynchronizedFactorizerTest {
 		}
 
 		@Override
-		public SynchronizedFactorizer getMainObject() {
+		public SlowCachedFactorizer getMainObject() {
 			return factorizer;
 		}
 
 		@Override
 		public void initialize() {
-			factorizer = new SynchronizedFactorizer();
+			factorizer = new SlowCachedFactorizer();
 		}
 
 		@Override
@@ -68,9 +68,9 @@ public class SynchronizedFactorizerTest {
 		}
 	}
 
-	private static class SecondaryTest extends SecondaryRunnableImpl<SynchronizedFactorizer, MainTest> {
+	private static class SecondaryTest extends SecondaryRunnableImpl<SlowCachedFactorizer, MainTest> {
 
-		private SynchronizedFactorizer factorizer;
+		private SlowCachedFactorizer factorizer;
 
 		private List<BigInteger> actualFactors;
 
@@ -95,7 +95,7 @@ public class SynchronizedFactorizerTest {
 		MainTest main = new MainTest();
 		SecondaryTest secondary = new SecondaryTest();
 
-		ClassInstrumentation clazz = Instrumentation.getClassInstrumentation(SynchronizedFactorizer.class);
+		ClassInstrumentation clazz = Instrumentation.getClassInstrumentation(SlowCachedFactorizer.class);
 		CodePosition position = clazz.afterCall("factorize", "set");
 
 		RunResult result = InterleavedRunner.interleaveAfter(main, secondary, position, 1);
@@ -105,6 +105,11 @@ public class SynchronizedFactorizerTest {
 	@Test
 	public void testCaching() {
 		ThreadedTestRunner runner = new ThreadedTestRunner();
-		runner.runTests(this.getClass(), SynchronizedFactorizer.class);
+		runner.runTests(this.getClass(), SlowCachedFactorizer.class);
+	}
+
+	@Test
+	public void testPerformance() {
+		CachedFactorizerPerformanceTest.testPerformance(new SlowCachedFactorizer(), 10000000, 20, 1000000, 10000000);
 	}
 }
