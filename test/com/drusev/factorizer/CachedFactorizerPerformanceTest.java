@@ -3,7 +3,10 @@
  */
 package com.drusev.factorizer;
 
+import static org.junit.Assert.assertEquals;
+
 import java.math.BigInteger;
+import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -75,11 +78,20 @@ public class CachedFactorizerPerformanceTest {
 		public void run() {
 			try {
 				startSignal.await();
-				factorizer.factorize(number);
+				verifyFactors(factorizer.factorize(number));
 			} catch (InterruptedException e) {
 				e.printStackTrace();
+			} finally {
+				endSignal.countDown();
 			}
-			endSignal.countDown();
+		}
+
+		private final void verifyFactors(final List<BigInteger> factors) {
+			BigInteger expectedNumber = BigInteger.ONE;
+			for (BigInteger factor : factors) {
+				expectedNumber = expectedNumber.multiply(factor);
+			}
+			assertEquals(expectedNumber, number);
 		}
 	}
 }
