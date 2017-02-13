@@ -63,7 +63,8 @@ public class OptimizedCachedFactorizerTest {
 
 	@Test
 	public void testPerformance() {
-		CachedFactorizerPerformanceTest.testPerformance(new OptimizedCachedFactorizer(), 10000000, 20, 1000000,
-				10000000);
+		final OptimizedCachedFactorizer factorizer = new OptimizedCachedFactorizer();
+		CachedFactorizerPerformanceTest.testPerformance(factorizer, 10000000, 20, 1000000, 1500000);
+		System.out.println("Cache hits ratio: " + factorizer.getCacheHitRatio());
 	}
 }

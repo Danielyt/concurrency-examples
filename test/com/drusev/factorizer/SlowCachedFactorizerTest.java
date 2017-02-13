@@ -110,6 +110,6 @@ public class SlowCachedFactorizerTest {
 
 	@Test
 	public void testPerformance() {
-		CachedFactorizerPerformanceTest.testPerformance(new SlowCachedFactorizer(), 10000000, 20, 1000000, 10000000);
+		CachedFactorizerPerformanceTest.testPerformance(new SlowCachedFactorizer(), 10000000, 20, 1000000, 1500000);
 	}
 }

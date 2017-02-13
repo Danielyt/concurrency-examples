@@ -59,4 +59,9 @@ public class UnsafeCachingFactorizerTest {
 		AnnotatedTestRunner runner = new AnnotatedTestRunner();
 		runner.runTests(this.getClass(), UnsafeCachingFactorizer.class);
 	}
+
+	@Test
+	public void testPerformance() {
+		CachedFactorizerPerformanceTest.testPerformance(new UnsafeCachingFactorizer(), 10000000, 20, 1000000, 1500000);
+	}
 }
