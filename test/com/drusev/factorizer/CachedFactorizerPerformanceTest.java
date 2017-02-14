@@ -39,6 +39,7 @@ public class CachedFactorizerPerformanceTest {
 
 		executeTasks(factorizer, numberOfRuns, executor, startSignal, endSignal, lowerBound, upperBound);
 		awaitExecutorToFinish(endSignal);
+		executor.shutdown();
 	}
 
 	private static void executeTasks(final Factorizer factorizer, final int numberOfRuns,
