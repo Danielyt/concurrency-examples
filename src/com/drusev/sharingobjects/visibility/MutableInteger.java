@@ -1,4 +1,4 @@
-package com.drusev.sharingobjects;
+package com.drusev.sharingobjects.visibility;
 
 /**
  * @author Drusev
