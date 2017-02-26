@@ -5,16 +5,16 @@ package com.drusev.sharingobjects;
 
 /**
  * An example of how the {@code this} reference can escape and a client of the
- * class can recieve an improperly constructed object.
+ * class can receive an improperly constructed object.
  * 
  * @author Drusev
  *
  */
-public class ThisEscape {
+public class UnsafeListener {
 
 	private int a;
 
-	public ThisEscape(final EventSource source) {
+	public UnsafeListener(final EventSource source) {
 		source.registerListener(new EventListener() {	
 			@Override
 			public void onEvent(final Event e) {
