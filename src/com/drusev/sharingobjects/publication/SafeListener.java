@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.drusev.sharingobjects;
+package com.drusev.sharingobjects.publication;
 
 /**
  * An example of using a factory method to prevent the {@code this} reference

@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.drusev.sharingobjects;
+package com.drusev.sharingobjects.publication;
 
 import java.util.ArrayList;
 import java.util.Collections;

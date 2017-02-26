@@ -1,7 +1,7 @@
 /**
  * 
  */
-package com.drusev.sharingobjects;
+package com.drusev.sharingobjects.publication;
 
 /**
  * An example of how the {@code this} reference can escape and a client of the
