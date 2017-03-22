@@ -18,7 +18,7 @@ public class OneValueCache {
 
 	public OneValueCache(final BigInteger lastNumber, final List<BigInteger> lastFactors) {
 		this.lastNumber = lastNumber;
-		this.lastFactors = lastFactors;
+		this.lastFactors = null != lastFactors ? new ArrayList<>(lastFactors) : null;
 	}
 
 	public List<BigInteger> getFactors(final BigInteger number) {
