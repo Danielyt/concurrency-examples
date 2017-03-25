@@ -12,8 +12,8 @@ package com.drusev.sharingobjects.publication;
  */
 public class SafeListener {
 
-	private int a;	
-	private EventListener listener;
+	private final int a;
+	private final EventListener listener;
 
 	/**
 	 * The constructor creates a new instance of EventListener and stores it in
