@@ -153,4 +153,9 @@ public class ImprovedList<E> implements List<E> {
 		return list.hashCode();
 	}
 
+	@Override
+	public synchronized String toString() {
+		return list.toString();
+	}
+
 }
